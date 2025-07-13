@@ -14,8 +14,8 @@
       height: 100%;
       width: 100%;
       font-family: sans-serif;
-      background-color: #000;
-      color: #fff;
+      background-color: #fff; /* Changed to white */
+      color: #000; /* Changed text to black for contrast */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -32,23 +32,35 @@
       max-width: 800px;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Adjusted shadow for white background */
+    }
+    button { /* Added button styling directly */
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #000; /* Changed button background to black */
+      color: #fff; /* Changed button text to white */
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <h1>Jesus saw that</h1>
   <img src="jesusmemeoriginal.png" alt="Judging Jesus Photo Placeholder">
-  <button onclick="window.location.href='index.html'" style="margin-top: 2rem; padding: 0.75rem 1.5rem; font-size: 1rem; background-color: #fff; color: #000; border: none; border-radius: 6px; cursor: pointer;">Back to Safety</button>
   <audio id="judgmentSound" src="moans.mp3" preload="auto"></audio>
 
-  <button onclick="playSoundAndReturn()" style="margin-top: 2rem; padding: 0.75rem 1.5rem; font-size: 1rem; background-color: #fff; color: #000; border: none; border-radius: 6px; cursor: pointer;">Back to Safety</button>
+  <button onclick="playSoundAndReturn()">Back to Safety</button>
 
   <script>
+    const audio = document.getElementById('judgmentSound');
+
     // Function to play the sound and redirect
     function playSoundAndReturn() {
-      const audio = document.getElementById('judgmentSound');
-      audio.play();
+      audio.play().catch(error => {
+        console.log("Audio play prevented by browser autoplay policies:", error);
+      });
       setTimeout(() => {
         window.location.href = 'index.html';
       }, 1500); // Wait 1.5 seconds before redirect
@@ -59,15 +71,16 @@
       window.location.href = 'index.html';
     }, 5000); // 5000 milliseconds = 5 seconds
 
-    // Play sound immediately when the page loads
-    window.onload = function() {
-      const audio = document.getElementById('judgmentSound');
-      audio.play().catch(error => {
-        // Handle potential autoplay policy issues (e.g., browsers blocking autoplay without user interaction)
-        console.log("Audio autoplay was prevented:", error);
-        // You might want to add a message to the user here to click to play sound
-      });
-    };
+    // Attempt to play sound immediately on user interaction with the document
+    // This is a common workaround for autoplay policies if the *first* interaction
+    // on the page is detected, even if not directly on a play button.
+    document.addEventListener('click', function userInteractionHandler() {
+        audio.play().catch(error => {
+            console.log("Attempted to play audio on first click, but failed:", error);
+        });
+        // Remove the event listener after the first attempt to avoid multiple plays
+        document.removeEventListener('click', userInteractionHandler);
+    }, { once: true }); // Ensure this listener only fires once
   </script>
 </body>
 </html>
