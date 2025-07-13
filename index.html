@@ -252,7 +252,7 @@
 
   <section class="tos">
     <h2>Terms of Service</h2>
-    <p>By browsing this site, you agree to all kinds of nonsense including but not limited to: random foot pics, unsolicited toe vibes, and glittery sock reveals. No refunds, no regrets.</p>
+    <p>By Browse this site, you agree to all kinds of nonsense including but not limited to: random foot pics, unsolicited toe vibes, and glittery sock reveals. No refunds, no regrets.</p>
   </section>
 
   <footer>
@@ -264,17 +264,19 @@
     setInterval(() => {
       document.getElementById('countdown').textContent = '00:00:03';
     }, 1000);
-  </script>
-  <script>
+
     // Redirect all buttons to Jesus page
     document.querySelectorAll('button').forEach(btn => {
       btn.onclick = () => window.location.href = 'jesus.html';
     });
 
-    setInterval(() => {
-      document.getElementById('countdown').textContent = '00:00:03';
-    }, 1000);
+    // Redirect all links to Jesus page
+    document.querySelectorAll('a').forEach(link => {
+      link.onclick = (event) => {
+        event.preventDefault(); // Prevent default link behavior
+        window.location.href = 'jesus.html';
+      };
+    });
   </script>
 </body>
 </html>
-
