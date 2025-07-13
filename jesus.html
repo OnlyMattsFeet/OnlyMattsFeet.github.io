@@ -61,13 +61,13 @@
       audio.play().catch(error => {
         console.log("Audio play prevented by browser autoplay policies:", error);
       });
-      // Removed the setTimeout that redirected to index.html
+      // Removed ALL redirection code from this function
     }
 
-    // Automatic redirect to index.html after 5 seconds
-    setTimeout(() => {
-      window.location.href = 'index.html';
-    }, 5000); // 5000 milliseconds = 5 seconds
+    // Removed the automatic redirect after 5 seconds
+    // setTimeout(() => {
+    //   window.location.href = 'index.html';
+    // }, 5000);
 
     // Attempt to play sound immediately on user interaction with the document (for general clicks, not just the button)
     document.addEventListener('click', function userInteractionHandler() {
