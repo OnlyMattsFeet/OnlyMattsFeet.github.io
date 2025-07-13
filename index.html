@@ -29,6 +29,37 @@
     }
 
     header {
+      background-color: var(--white);<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OnlyMattsFeet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #007aff;
+      --dark-blue: #004b8d;
+      --white: #ffffff;
+      --gray: #f0f0f0;
+      --text: #000000;
+      --accent: #ffd700;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--gray);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
       background-color: var(--white);
       padding: 1rem 2rem;
       display: flex;
@@ -56,7 +87,7 @@
       padding: 3rem 2rem;
     }
 
-   .hero img {
+    .hero img {
       /* New styles for the hero image */
       width: 300px; /* Set to match the .checkout div width, which is also used for profile cards in wider views */
       height: auto; /* Maintain aspect ratio */
@@ -76,7 +107,7 @@
       padding: 1.5rem;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      width: 300px;
+      width: 300px; /* This is the target width */
     }
 
     .checkout button {
@@ -267,12 +298,14 @@
       document.getElementById('countdown').textContent = '00:00:03';
     }, 1000);
 
-    // Redirect all buttons to Jesus page
+    // Redirect all buttons EXCEPT submit buttons to jesus.html
     document.querySelectorAll('button').forEach(btn => {
-      btn.onclick = () => window.location.href = 'jesus.html';
+      if (btn.type !== 'submit') { // Only apply redirect if it's not a submit button
+        btn.onclick = () => window.location.href = 'jesus.html';
+      }
     });
 
-    // Redirect all links to Jesus page
+    // Redirect all links to jesus.html
     document.querySelectorAll('a').forEach(link => {
       link.onclick = (event) => {
         event.preventDefault(); // Prevent default link behavior
