@@ -1,12 +1,230 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My First Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OnlyMattsFeet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #00aff0;
+      --dark-blue: #005f7f;
+      --white: #ffffff;
+      --gray: #f5f5f5;
+      --text: #1c1c1e;
+      --accent: #ffd700;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--gray);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      margin-left: 1.5rem;
+      font-weight: 500;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(to right, var(--blue), var(--dark-blue));
+      color: var(--white);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero button {
+      padding: 1rem 2rem;
+      background: var(--white);
+      color: var(--blue);
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .hero button:hover {
+      background: var(--gray);
+    }
+
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .profiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .profile-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .profile-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .profile-card h3 {
+      margin-top: 1rem;
+    }
+
+    .profile-card p {
+      font-size: 0.9rem;
+      color: #555;
+      padding: 0 1rem 1rem;
+    }
+
+    .subscribe {
+      background-color: var(--white);
+      border-radius: 10px;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .subscribe h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .subscribe p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .subscribe button {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .subscribe button:hover {
+      background: var(--dark-blue);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      color: #777;
+      background: var(--white);
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      nav a {
+        margin-left: 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <p>Welcome to my website hosted on GitHub Pages.</p>
+  <header>
+    <div class="logo">OnlyMattsFeet</div>
+    <nav>
+      <a href="#">Log in</a>
+      <a href="#">Sign up</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Subscribe to Matt’s Feet</h1>
+    <p>Daily toe drops. Weekly sole goals. For fans of fine foot art.</p>
+    <button>Become a Foot Fan</button>
+  </section>
+
+  <section class="section">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Featured Feet</h2>
+    <div class="profiles">
+      <div class="profile-card">
+        <img src="https://placekitten.com/400/200" alt="Matt's Foot 1">
+        <h3>Lefty</h3>
+        <p>The classic. Smooth arch, iconic pinky toe, unmatched by righty.</p>
+      </div>
+      <div class="profile-card">
+        <img src="https://placekitten.com/401/200" alt="Matt's Foot 2">
+        <h3>Righty</h3>
+        <p>Strong heel game. Slightly rebellious. Once wore socks in sandals.</p>
+      </div>
+      <div class="profile-card">
+        <img src="https://placekitten.com/402/200" alt="Matt's Foot 3">
+        <h3>Both Together</h3>
+        <p>For the true connoisseurs. Double trouble, double toes.</p>
+      </div>
+    </div>
+
+    <div class="subscribe">
+      <h2>Unlock Exclusive Toe Content</h2>
+      <p>Blurry previews got you curious? Subscribe to see the full sole story.</p>
+      <button>Join Matt’s Fan Club</button>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 OnlyMattsFeet — This site is a parody for fun and not affiliated with OnlyFans.<br>
+    No real feet were monetized in the making of this page.
+  </footer>
 </body>
 </html>
-
-
