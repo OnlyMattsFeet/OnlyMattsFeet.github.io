@@ -181,7 +181,7 @@
     <img src="OMF Logo 1.png" alt="OnlyMattsFeet Logo Large">
     <h1>Subscribe to Matt’s Feet</h1>
     <p>Daily toe drops. Weekly sole goals. For fans of fine foot art.</p>
-    <button>Become a Piggy Princess</button>
+    <button id="piggyPrincessBtn">Become a Piggy Princess</button>
   </section>
 
   <section class="section">
@@ -209,12 +209,12 @@
     <div>
       <h3>Premium Toe Access - $5</h3>
       <p>Support Matt’s pedicure fund and unlock the holy grail of foot content.</p>
-      <button>Checkout with PayPal</button>
+      <button id="paypalBtn">Checkout with PayPal</button>
     </div>
     <div>
       <h3>Shhh... $5 for silence</h3>
       <p>We know where you live. Pay $5 and receive nothing... or else?</p>
-      <button>Mysterious Transaction</button>
+      <button id="mysteryBtn">Mysterious Transaction</button>
     </div>
   </section>
 
@@ -240,7 +240,7 @@
     <img src="shirt-placeholder.jpg" alt="Merch Shirt Placeholder" style="width:100%; max-width:400px; margin-bottom:1rem;">
     <h2>Merch Store</h2>
     <p><strong>"I pay for Matt’s Feet"</strong> shirts available now.</p>
-    <button>Shop Now</button>
+    <button id="shopNowBtn">Shop Now</button>
   </section>
 
   <section class="email">
@@ -254,7 +254,7 @@
 
   <section class="tos">
     <h2>Terms of Service</h2>
-    <p>By Browse this site, you agree to all kinds of nonsense including but not limited to: random foot pics, unsolicited toe vibes, and glittery sock reveals. No refunds, no regrets.</p>
+    <p>By browsing this site, you agree to all kinds of nonsense including but not limited to: random foot pics, unsolicited toe vibes, and glittery sock reveals. No refunds, no regrets.</p>
   </section>
 
   <footer>
@@ -267,19 +267,29 @@
       document.getElementById('countdown').textContent = '00:00:03';
     }, 1000);
 
-    // Redirect all buttons EXCEPT submit buttons to jesus.html
-    document.querySelectorAll('button').forEach(btn => {
-      if (btn.type !== 'submit') { // Only apply redirect if it's not a submit button
-        btn.onclick = () => window.location.href = 'jesus.html';
+    // Function to redirect to jesus.html
+    function redirectToJesus(event) {
+      if (event) {
+        event.preventDefault(); // Prevent default link/button behavior if applicable
       }
+      window.location.href = 'jesus.html';
+    }
+
+    // Target specific buttons by ID
+    document.getElementById('piggyPrincessBtn').onclick = redirectToJesus;
+    document.getElementById('paypalBtn').onclick = redirectToJesus;
+    document.getElementById('mysteryBtn').onclick = redirectToJesus;
+    document.getElementById('shopNowBtn').onclick = redirectToJesus;
+
+    // Target all images
+    document.querySelectorAll('img').forEach(img => {
+      img.style.cursor = 'pointer'; // Indicate it's clickable
+      img.onclick = redirectToJesus;
     });
 
-    // Redirect all links to jesus.html
+    // Redirect all links to jesus.html (from previous request)
     document.querySelectorAll('a').forEach(link => {
-      link.onclick = (event) => {
-        event.preventDefault(); // Prevent default link behavior
-        window.location.href = 'jesus.html';
-      };
+      link.onclick = redirectToJesus;
     });
   </script>
 </body>
