@@ -65,19 +65,28 @@
 
     .checkout {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+      flex-direction: column; /* Changed to column to stack elements */
+      align-items: center; /* Center items horizontally */
       gap: 2rem;
       margin: 2rem 0;
     }
 
-    .checkout div {
+    .checkout > div { /* Target the div containing the payment buttons */
+      display: flex; /* Make children of .checkout div side-by-side */
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      width: 100%; /* Take full width of parent */
+    }
+
+    .checkout div > div { /* Target each individual payment option box */
       background: var(--white);
       padding: 1.5rem;
       border-radius: 8px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       width: 300px; /* This is the target width */
     }
+
 
     .checkout button {
       background: var(--blue);
@@ -93,8 +102,20 @@
     #piggyPrincessBtn {
       padding: 1.2rem 2.5rem; /* Increased padding */
       font-size: 1.2rem; /* Larger font size */
-      background-color: #ADD8E6; /* Optional: make it stand out */
+      background-color: #ADD8E6; /* Changed to light blue */
       color: var(--text); /* Optional: change text color for contrast */
+    }
+
+    /* Styling for the new CashApp button */
+    #cashAppBtn {
+      background-color: #00C244; /* Cash App's green color */
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 1rem; /* Space it out from the other buttons */
     }
     
     .profiles {
@@ -217,15 +238,16 @@
   </section>
 
   <section class="checkout">
-    <div>
-      <h3>Premium Toe Access - $5</h3>
-      <p>Support Matt’s pedicure fund and unlock the holy grail of foot content.</p>
-      <button id="paypalBtn">Checkout with PayPal</button>
-    </div>
-    <div>
-      <h3>No Toe Access - $5</h3>
-      <p>We have your ip address. Pay $5 NOT to recieve unsolicited toe pics</p>
-      <button id="mysteryBtn">Mysterious Transaction</button>
+    <button id="cashAppBtn">CashApp $TheBaldMatt to support more content creation</button> <div> <div>
+        <h3>Premium Toe Access - $5</h3>
+        <p>Support Matt’s pedicure fund and unlock the holy grail of foot content.</p>
+        <button id="paypalBtn">Checkout with PayPal</button>
+      </div>
+      <div>
+        <h3>No Toe Access - $5</h3>
+        <p>We have your ip address. Pay $5 NOT to recieve unsolicited toe pics</p>
+        <button id="mysteryBtn">Mysterious Transaction</button>
+      </div>
     </div>
   </section>
 
@@ -265,7 +287,7 @@
 
   <section class="tos">
     <h2>Terms of Service</h2>
-    <p>By browsing this site, you agree to all kinds of nonsense including but not limited to: random foot pics, unsolicited toe vibes, and glittery sock reveals. No refunds, no regrets.</p>
+    <p>By Browse this site, you agree to all kinds of nonsense including but not limited to: random foot pics, unsolicited toe vibes, and glittery sock reveals. No refunds, no regrets.</p>
   </section>
 
   <footer>
@@ -286,13 +308,13 @@
       window.location.href = 'jesus.html';
     }
 
-    // Target specific buttons by ID
+    // Target specific buttons by ID for jesus.html redirect
     document.getElementById('piggyPrincessBtn').onclick = redirectToJesus;
     document.getElementById('paypalBtn').onclick = redirectToJesus;
     document.getElementById('mysteryBtn').onclick = redirectToJesus;
     document.getElementById('shopNowBtn').onclick = redirectToJesus;
 
-    // Target all images
+    // Target all images for jesus.html redirect
     document.querySelectorAll('img').forEach(img => {
       img.style.cursor = 'pointer'; // Indicate it's clickable
       img.onclick = redirectToJesus;
@@ -302,6 +324,11 @@
     document.querySelectorAll('a').forEach(link => {
       link.onclick = redirectToJesus;
     });
+
+    // Specific redirect for the CashApp button
+    document.getElementById('cashAppBtn').onclick = () => {
+      window.location.href = 'https://cash.app/$TheBaldMatt'; // Redirect to your Cash App
+    };
   </script>
 </body>
 </html>
